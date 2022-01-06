@@ -40,9 +40,8 @@ def get_task_by_title(db: Session, title: str):
     return db.query(models.Task).filter(models.Task.title == title).first()
 
 
-def create_task(db: Session, task: schemas.TaskCreate):
-    db_task = models.Task(flag=task.flag)
-    print(db_task)
+def create_task(db: Session, task: schemas.TaskIn):
+    db_task = models.Task(**task.dict())
     db.add(db_task)
     db.commit()
     db.refresh(db_task)

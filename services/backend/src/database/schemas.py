@@ -3,10 +3,20 @@ from pydantic import BaseModel
 
 
 class TaskBase(BaseModel):
+    category: str
     title: str
-    description: Optional[str] = None
-    category: Optional[str] = None
-    url: Optional[str] = None
+    description: str
+    state: bool
+    url: str
+
+
+class TaskIn(TaskBase):
+    flag: str
+
+
+class Task(TaskBase):
+    class Config:
+        orm_mode = True
 
 
 class ItemBase(BaseModel):
@@ -16,14 +26,6 @@ class ItemBase(BaseModel):
 
 class ItemCreate(ItemBase):
     pass
-
-
-class TaskCreate(TaskBase):
-    flag: Optional[str] = None
-
-
-class Task(TaskBase):
-    id: int
 
 
 class Item(ItemBase):

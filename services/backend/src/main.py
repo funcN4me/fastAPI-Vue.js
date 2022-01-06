@@ -64,13 +64,12 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return items
 
 
-@app.post("/tasks", response_model=schemas.Task)
-def create_task(task: schemas.TaskCreate, db: Session = Depends(get_db)):
-    db_task = crud.get_task_by_title(db=db, title=task.title)
-    if db_task:
-        raise HTTPException(400, 'Таск с таким названием уже существует')
-    print(task)
-    return crud.create_task(db, task)
+@app.post("/task/", response_model=schemas.Task)
+async def create_task(task_in: schemas.TaskIn, db: Session = Depends(get_db)):
+    task = crud.create_task(db=db, task=task_in)
+    return task
+
+
 
 # @app.get('/')
 # def say_hello(db: Session = Depends(get_db)):
