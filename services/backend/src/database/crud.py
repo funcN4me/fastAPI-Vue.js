@@ -34,3 +34,16 @@ def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
     db.commit()
     db.refresh(db_item)
     return db_item
+
+
+def get_task_by_title(db: Session, title: str):
+    return db.query(models.Task).filter(models.Task.title == title).first()
+
+
+def create_task(db: Session, task: schemas.TaskCreate):
+    db_task = models.Task(flag=task.flag)
+    print(db_task)
+    db.add(db_task)
+    db.commit()
+    db.refresh(db_task)
+    return db_task

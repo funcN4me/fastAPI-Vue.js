@@ -64,7 +64,16 @@ def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return items
 
 
-@app.get('/')
-def say_hello(db: Session = Depends(get_db)):
-    items: List[models.Item] = crud.get_items(db=db, skip=0, limit=1)
-    return items[0].owner
+@app.post("/tasks", response_model=schemas.Task)
+def create_task(task: schemas.TaskCreate, db: Session = Depends(get_db)):
+    db_task = crud.get_task_by_title(db=db, title=task.title)
+    if db_task:
+        raise HTTPException(400, 'Таск с таким названием уже существует')
+    print(task)
+    return crud.create_task(db, task)
+
+# @app.get('/')
+# def say_hello(db: Session = Depends(get_db)):
+#     user: models.User = crud.get_user_by_email(db=db, email='shrek@kk.ru')
+#     tasks: models.Task = crud.get_tasks(db=db)
+#     return user.tasks   # item.users
