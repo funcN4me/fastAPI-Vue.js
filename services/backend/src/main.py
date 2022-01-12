@@ -70,6 +70,29 @@ async def create_task(task_in: schemas.TaskIn, db: Session = Depends(get_db)):
     return task
 
 
+@app.post('/register')
+def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    db_user = crud.get_user_by_email(db=db, email=user.email)
+    if db_user is None:
+        return crud.create_user(db=db, user=user)
+
+    raise HTTPException(status_code=400, detail="User with this email is already registered")
+
+
+@app.post('/login')
+def login():
+    pass
+
+
+@app.get('/unprotected')
+def unprotected():
+    return {'hello': 'world'}
+
+
+@app.get('/protected')
+def protected():
+    return {}
+
 
 # @app.get('/')
 # def say_hello(db: Session = Depends(get_db)):

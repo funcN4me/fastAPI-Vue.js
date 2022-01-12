@@ -1,7 +1,7 @@
 <template>
   <div class="login__buttons">
-    <a class="navbar-text" href="#"> <MDBIcon icon="user-plus" iconStyle="fas" size="1x"/> Зарегистрироваться </a>
-    <a href="#" class="navbar-text"> <MDBIcon icon="sign-in-alt" iconStyle="fas" size="1x"/> Войти </a>
+    <a class="navbar-text" href="/register"> <MDBIcon icon="user-plus" iconStyle="fas" size="1x"/> Зарегистрироваться </a>
+    <a href="/login" class="navbar-text"> <MDBIcon icon="sign-in-alt" iconStyle="fas" size="1x"/> Войти </a>
   </div>
 </template>
 

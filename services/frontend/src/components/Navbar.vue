@@ -1,6 +1,6 @@
 <template>
   <MDBNavbar light style="background-color: #e3f2fd; padding: 20px 50px" expand="lg" container>
-    <MDBNavbarBrand href="#">Navbar</MDBNavbarBrand>
+    <MDBNavbarBrand href="/">Navbar</MDBNavbarBrand>
     <MDBNavbarToggler target="navbarNav"></MDBNavbarToggler>
     <MDBNavbarNav collapse="navbarNav">
       <MDBNavbarItem to="#" active> Home </MDBNavbarItem>
@@ -13,8 +13,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
-  import {
+import {
     MDBNavbar,
     MDBNavbarToggler,
     MDBNavbarBrand,
@@ -23,8 +22,9 @@
   } from 'mdb-vue-ui-kit';
 import RegisterButton from "./RegisterButton";
 
-  export default {
-    components: {
+export default {
+  name: "Navbar",
+  components: {
       RegisterButton,
       MDBNavbar,
       MDBNavbarToggler,
@@ -32,26 +32,9 @@ import RegisterButton from "./RegisterButton";
       MDBNavbarNav,
       MDBNavbarItem,
     },
-  };
-  // methods: {
-  //   getMessage() {
-  //     axios.get('/')
-  //       .then((res) => {
-  //         this.msg = res.data;
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   },
-  // },
-  // created() {
-  //   this.getMessage();
-  // },
+}
 </script>
 
-
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

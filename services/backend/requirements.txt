@@ -3,3 +3,5 @@ uvicorn==0.15.0
 SQLAlchemy==1.4.14
 psycopg2==2.9.2
 alembic==1.6.2
+python-jose==3.3.0
+passlib==1.7.4
