@@ -1,5 +1,5 @@
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class TaskBase(BaseModel):
@@ -37,11 +37,11 @@ class Item(ItemBase):
 
 
 class UserBase(BaseModel):
-    email: str
+    email: str = Field(..., min_length=5)
 
 
 class UserCreate(UserBase):
-    password: str
+    password: str = Field(..., min_length=8)
 
 
 class User(UserBase):
@@ -52,3 +52,16 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
+
+
+class Status(BaseModel):
+    message: str
