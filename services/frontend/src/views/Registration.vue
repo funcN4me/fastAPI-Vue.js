@@ -7,10 +7,10 @@
 import Navbar from "@/components/Navbar";
 import RegisterForm from "@/components/RegisterForm";
 export default {
-  name: "Register",
+  name: "Registration",
   components: {
-    Navbar,
     RegisterForm,
+    Navbar,
   }
 }
 </script>
