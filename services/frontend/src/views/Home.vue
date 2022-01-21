@@ -1,15 +1,15 @@
 <template>
-  <Navbar/>
+  <Navbar msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
 // @ is an alias to /src
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar";
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Navbar
   }
-};
+}
 </script>
